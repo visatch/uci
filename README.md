@@ -32,7 +32,7 @@ nohup python main.py &
 ## To ensure the script is working, you can perform of the two tests below
 ```
 #First option
-ps -aux | grep main.py # If it has a result, script is working normally.
+ps -aux | grep [m]ain.py # If it has a result, script is working normally.
 
 #Second option
 cat nohup.out #This file contains all the output from the main.py script, so if any error, it will show there.
