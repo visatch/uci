@@ -8,7 +8,7 @@ import schedule
 import time
 from datetime import datetime
 
-TARGET = ["17148242592","18587760368"]
+TARGET = [""]
 
 def main():
     with open("records.txt",'a') as file:
@@ -133,9 +133,9 @@ def parse_course_name(html_snippet:str ) -> str:
 
 def send_msg(target: List, body:str):
     sinch_client = Client(
-    key_id="c50800f4-f6b8-4af5-a0cd-bc2bc73c5642",
-    key_secret="AuvVZcFsk-jchCzu0aSwEUlWxk",
-    project_id="b26e6930-fc88-4b4c-86b8-60fc57c290ae"
+    key_id="",
+    key_secret="",
+    project_id=""
     )
 
     send_batch_response = sinch_client.sms.batches.send(
