@@ -32,7 +32,7 @@ class ZipZipTree:
         count = 0
         while random.randint(0,1) != 1:  
             count += 1
-        uniform = random.randint(0,int(math.log2(self.capacity**3-1)))
+        uniform = random.randint(0,int(math.log2(self.capacity)**3-1))
         return Rank(count, uniform)
 
     def insert(self, key: KeyType, val: ValType, rank: Rank = None):
@@ -89,13 +89,14 @@ class ZipZipTree:
 
         self.size += 1
 
-    def remove(self, key: KeyType): 
+    def remove(self, key: KeyType):
         if self.root is None:
             return
 
         cur = self.root
-        prev = None 
+        prev = None
 
+        # Find the node to delete
         while cur is not None and key != cur.key:
             prev = cur
             if key < cur.key:
@@ -104,41 +105,53 @@ class ZipZipTree:
                 cur = cur.right
 
         if cur is None:
-            return
+            return  # Node to delete not found
 
         left = cur.left
         right = cur.right
-        
+
         if left is None:
             cur = right
         elif right is None:
             cur = left
-        elif left.rank.geometric_rank >= right.rank.geometric_rank \
-                                or (left.rank.geometric_rank == right.rank.geometric_rank ):
+        elif self.compare_rank_gt(left, right):
             cur = left
         else:
-            cur = right  
+            cur = right
 
-        if self.root == key:
+        # Update root or parent's child reference
+        if self.root.key == key:
             self.root = cur
         elif key < prev.key:
             prev.left = cur
         else:
             prev.right = cur
 
+        # Fix the structure after deletion
         while left is not None and right is not None:
-            if left.rank.geometric_rank >= right.rank.geometric_rank:
-                while left is not None and left.rank.geometric_rank >= right.rank_geometric_rank:
+            if self.compare_rank_gt(left, right):
+                while left is not None and self.compare_rank_gt(left, right):
                     prev = left
                     left = left.right
                 prev.right = right
             else:
-                while right is not None and left.rank.geometric_rank < right.rank_geometric_rank:
+                while right is not None and self.compare_rank_lt(left, right):
                     prev = right
                     right = right.left
                 prev.left = left
 
-        self.size -= 1
+        self.size -= 1 
+       
+    def compare_rank_gt(self,left: Node, right: Node):
+        return left.rank.geometric_rank > right.rank.geometric_rank \
+            or (left.rank.geometric_rank == right.rank.geometric_rank and left.rank.uniform_rank > right.rank.uniform_rank) \
+            or (left.rank.geometric_rank == right.rank.geometric_rank and left.rank.uniform_rank == right.rank.uniform_rank and left.key > right.key)
+    
+    def compare_rank_lt(self,left: Node, right: Node):
+        return left.rank.geometric_rank < right.rank.geometric_rank \
+            or (left.rank.geometric_rank == right.rank.geometric_rank and left.rank.uniform_rank < right.rank.uniform_rank) \
+            or (left.rank.geometric_rank == right.rank.geometric_rank and left.rank.uniform_rank == right.rank.uniform_rank and left.key < right.key)
+
 
     def _min_value_node(self, node: Node) -> Node:
         current = node
@@ -193,5 +206,5 @@ class ZipZipTree:
     def _print_tree(self, node: Optional[Node],depth: int):
         if node is not None:
             self._print_tree(node.right, depth + 1)
-            print("    " * depth + f"({node.key}, rank: ({node.rank.geometric_rank}, {node.rank.uniform_rank}))")
+            print("    " * depth + f"({node.key},{node.val} rank: ({node.rank.geometric_rank}, {node.rank.uniform_rank}))")
             self._print_tree(node.left, depth + 1)
