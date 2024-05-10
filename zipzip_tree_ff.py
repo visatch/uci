@@ -1,19 +1,22 @@
 from dataclasses import dataclass
 from typing import Optional, List
 from zipzip_tree import ZipZipTree, Node, Rank, KeyType
+from decimal import Decimal, getcontext
+
 
 @dataclass
 class FFVal:
-    remaining_capacity: float
-    best_remaining_capacity: float
+    remaining_capacity: Decimal
+    best_remaining_capacity: Decimal
 
 class ZipZipTreeFF(ZipZipTree):
     def __init__(self, capacity: int):
         super().__init__(capacity)
+        getcontext().prec = 6
 
     def update_node(self, node: Node):
-        best_on_left_side = node.left.val.best_remaining_capacity if node.left else 0
-        best_on_right_side = node.right.val.best_remaining_capacity if node.right else 0
+        best_on_left_side = node.left.val.best_remaining_capacity if node.left else Decimal(0)
+        best_on_right_side = node.right.val.best_remaining_capacity if node.right else Decimal(0)
         myself = node.val.remaining_capacity
 
         node.val.best_remaining_capacity = max(myself,best_on_left_side,best_on_right_side)
@@ -44,22 +47,14 @@ class ZipZipTreeFF(ZipZipTree):
         current = self.root
         best_fit = None
 
+        item_size = Decimal(str(item_size))
+        
         while current is not None:
-            if current.val.remaining_capacity >= item_size - 1e-9 or self.is_equal(current.val.remaining_capacity,item_size):
+            if current.val.remaining_capacity >= item_size:
                 best_fit = current
                 current = current.left
             else:
                 current = current.right
         
         return best_fit
-    
-    def is_equal(self,l: float, r: float) -> bool:
-        if abs(l - r) > 1e-9:
-            return False
-        return True
-
-
-        
-        
-
 
