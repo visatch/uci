@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # UCI Repo
 ## UCI Class Availability Notification Service
 This project is a continuous monitoring service designed to run in the background, ideal for server or Raspberry Pi environments with a constant internet connection. It leverages several Python packages to perform tasks such as scheduling events, making HTTP requests, parsing HTML content, and sending notifications.
@@ -37,3 +38,6 @@ ps -aux | grep [m]ain.py # If it has a result, script is working normally.
 #Second option
 cat nohup.out #This file contains all the output from the main.py script, so if any error, it will show there.
 ```
+=======
+# cs165
+>>>>>>> cs165_p2_code/main
