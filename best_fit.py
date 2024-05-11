@@ -4,12 +4,15 @@ from decimal import Decimal, getcontext
 from zipzip_tree_bf import ZipZipTreeBF, BFVal
 
 def best_fit(items: List[float], assignment: List[int], free_space: List[float]):
+    # items = hybrid_sort_desc(items)
     getcontext().prec = 6
     bin_tree = ZipZipTreeBF(len(items))
     bin_capacity = Decimal(1.0)
     bin_index = 0 
 
     for i, item in enumerate(items):
+        # bin_tree.print_tree()
+        # print(assignment)
         item = Decimal(str(item))
         best_bin = bin_tree.find_best_fit(item)
 
@@ -28,8 +31,8 @@ def best_fit(items: List[float], assignment: List[int], free_space: List[float])
             free_space[best_bin.key] = float(best_bin.val.remaining_capacity)
             bin_tree.update_tree(best_bin.key)
             
-    print(assignment)
-    print(free_space)
+    # print(assignment)
+    # print(free_space)
 
 
 

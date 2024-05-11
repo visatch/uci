@@ -5,6 +5,7 @@ from __future__ import annotations
 import math, random
 from typing import TypeVar, Optional
 from dataclasses import dataclass
+from collections import deque
 
 KeyType = TypeVar('KeyType')
 ValType = TypeVar('ValType')
@@ -202,22 +203,35 @@ class ZipZipTree:
             print("Tree is empty")
         else:
            print("-"*25)
-           self._print_tree(self.root,"")
+           self._print_tree(self.root)
            print("-"*25)
 
-    def _print_tree(self, node: Optional[Node],indent: str):
-        # if node is not None:
-        #     self._print_tree(node.right, depth + 1)
-        #     print("    " * depth + f"({node.key},{node.val} rank: ({node.rank.geometric_rank}, {node.rank.uniform_rank}))")
-        #     self._print_tree(node.left, depth + 1)
-        if node is not None:
-            print(f"{indent}{node.key}")
-            if node.left is not None or node.right is not None:
-                if node.left is not None:
-                    self._print_tree(node.left, indent + " ")
-                else:
-                    print(f"{indent} \\")
-                if node.right is not None:
-                    self._print_tree(node.right, indent + " ")
-                else:
-                    print(f"{indent} \\")
+    def _print_tree(self, root: Optional[Node]):
+        if root is None:
+            return
+
+        # Initialize a queue for breadth-first traversal
+        queue = deque([(root, 0)])
+        current_depth = 0
+        result = []
+
+        while queue:
+            node, depth = queue.popleft()
+
+            # Check if we have moved to the next level
+            if depth > current_depth:
+                print(" | ".join(result))
+                result = []
+                current_depth = depth
+
+            # Add the current node to the result
+            if node:
+                result.append(f"({node.key}, {node.val.remaining_capacity})")
+                queue.append((node.left, depth + 1))
+                queue.append((node.right, depth + 1))
+            else:
+                result.append("None")
+
+        # Print the last level
+        if result:
+            print(" | ".join(result)) 
