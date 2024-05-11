@@ -44,24 +44,6 @@ class ZipZipTreeBF(ZipZipTree):
             self.update_node(node)
     
     def find_best_fit(self, item_size: Decimal) -> Optional[Node]:
-        # best_fit = None
-        # current = self.root
-
-        # while current is not None:
-        #     if current.val.remaining_capacity >= item_size:
-        #         # If current node can fit the item, check if it is a better fit than the current best fit
-        #         if best_fit is None or current.val.remaining_capacity < best_fit.val.remaining_capacity:
-        #             best_fit = current
-
-        #     # Explore both left and right subtrees if they have a best remaining capacity that can fit the item
-        #     if current.left and current.left.val.best_remaining_capacity >= item_size:
-        #         current = current.left
-        #     elif current.right and current.right.val.best_remaining_capacity >= item_size:
-        #         current = current.right
-        #     else:
-        #         break
-
-        # return best_fit
         best_fit = None
         best_fit_capacity = Decimal('Infinity')
         stack = [self.root]
