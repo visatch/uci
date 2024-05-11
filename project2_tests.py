@@ -113,9 +113,9 @@ def bin_packing_tests():
 	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 3, 2, 1, 0, 3], free_space = [0.0, 0.0, 0.0, 0.4])
 	# test_algorithm(test1, expected_result, requirements.first_fit_decreasing, 'first_fit_decreasing')
 
-	# # best-fit
-	# expected_result = ProblemInstance(items = items, assignments = [0, 0, 1, 1, 2, 1, 3, 3], free_space = [0.1, 0.0, 0.3, 0.0])
-	# test_algorithm(test1, expected_result, requirements.best_fit, 'best_fit')
+	# best-fit
+	expected_result = ProblemInstance(items = items, assignments = [0, 0, 1, 1, 2, 1, 3, 3], free_space = [0.1, 0.0, 0.3, 0.0])
+	test_algorithm(test1, expected_result, requirements.best_fit, 'best_fit')
 
 	# # best-fit decreasing
 	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 3, 2, 1, 0, 3], free_space = [0.0, 0.0, 0.0, 0.4])
@@ -167,9 +167,9 @@ def bin_packing_tests():
 	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 2, 3, 0, 1], free_space = [0, 0.33, 0.03, 0.58])
 	# test_algorithm(test3, expected_result, requirements.first_fit_decreasing, 'first_fit_decreasing')
 
-	# # best-fit
-	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 1, 0, 2, 0, 3], free_space = [0.12, 0, 0.46, 0.36])
-	# test_algorithm(test3, expected_result, requirements.best_fit, 'best_fit')
+	# best-fit
+	expected_result = ProblemInstance(items = items, assignments = [0, 1, 1, 0, 2, 0, 3], free_space = [0.12, 0, 0.46, 0.36])
+	test_algorithm(test3, expected_result, requirements.best_fit, 'best_fit')
 
 	# # best-fit decreasing
 	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 2, 3, 0, 2], free_space = [0, 0.36, 0, 0.58])
@@ -194,9 +194,9 @@ def bin_packing_tests():
 	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 3, 4, 5, 6, 7, 7, 6, 5, 3, 1, 2, 4, 0, 0, 2, 0, 2], free_space = [0, 0.01, 0.01, 0, 0.14, 0, 0, 0])
 	# test_algorithm(test4, expected_result, requirements.first_fit_decreasing, 'first_fit_decreasing')
 
-	# # best-fit
-	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 0, 2, 1, 1, 3, 4, 5, 1, 5, 6, 4, 6, 3, 2, 3, 7, 8, 3], free_space = [0, 0.01, 0.18, 0.01, 0, 0, 0.02, 0.37, 0.57])
-	# test_algorithm(test4, expected_result, requirements.best_fit, 'best_fit')
+	# best-fit
+	expected_result = ProblemInstance(items = items, assignments = [0, 1, 0, 2, 1, 1, 3, 4, 5, 1, 5, 6, 4, 6, 3, 2, 3, 7, 8, 3], free_space = [0, 0.01, 0.18, 0.01, 0, 0, 0.02, 0.37, 0.57])
+	test_algorithm(test4, expected_result, requirements.best_fit, 'best_fit')
 
 	# # best-fit decreasing
 	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 3, 4, 5, 6, 7, 7, 6, 5, 3, 1, 2, 4, 2, 4, 4, 0, 4], free_space = [0.13, 0.01, 0.02, 0, 0, 0, 0, 0])
