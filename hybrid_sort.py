@@ -1,6 +1,6 @@
 from typing import List
 
-def hybrid_sort(nums: List[int],H: int) -> List[int]:
+def hybrid_sort_desc(nums: List[int],H: int) -> List[int]:
     H = len(nums) ** (2/5)
     n = len(nums)
 
@@ -9,8 +9,8 @@ def hybrid_sort(nums: List[int],H: int) -> List[int]:
         L = nums[:mid]
         R = nums[mid:]
 
-        hybrid_sort(L,H)
-        hybrid_sort(R,H)
+        hybrid_sort_desc(L,H)
+        hybrid_sort_desc(R,H)
 
         i = j = k = 0
 

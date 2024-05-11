@@ -109,9 +109,9 @@ def bin_packing_tests():
 	# expected_result = ProblemInstance(items = items, assignments = [0, 0, 1, 1, 2, 1, 3, 3], free_space = [0.1, 0.0, 0.3, 0.0])
 	# test_algorithm(test1, expected_result, requirements.first_fit, 'first_fit')
 
-	# first-fit decreasing
-	expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 3, 2, 1, 0, 3], free_space = [0.0, 0.0, 0.0, 0.4])
-	test_algorithm(test1, expected_result, requirements.first_fit_decreasing, 'first_fit_decreasing')
+	# # first-fit decreasing
+	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 3, 2, 1, 0, 3], free_space = [0.0, 0.0, 0.0, 0.4])
+	# test_algorithm(test1, expected_result, requirements.first_fit_decreasing, 'first_fit_decreasing')
 
 	# # best-fit
 	# expected_result = ProblemInstance(items = items, assignments = [0, 0, 1, 1, 2, 1, 3, 3], free_space = [0.1, 0.0, 0.3, 0.0])
@@ -136,13 +136,13 @@ def bin_packing_tests():
 	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 0, 0, 3, 3, 4, 0, 5, 1, 4], free_space = [0, 0.09, 0.05, 0.01, 0.1, 0.62])
 	# test_algorithm(test2, expected_result, requirements.first_fit, 'first_fit')
 
-	# first-fit decreasing
-	expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 3, 4, 4, 5, 3, 1, 0, 2, 2], free_space = [0, 0, 0.14, 0.1, 0.01, 0.62])
+	# # first-fit decreasing
+	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 3, 4, 4, 5, 3, 1, 0, 2, 2], free_space = [0, 0, 0.14, 0.1, 0.01, 0.62])
 	# test_algorithm(test2, expected_result, requirements.first_fit_decreasing, 'first_fit_decreasing')
 
-	# # best-fit
-	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 1, 2, 3, 3, 4, 0, 5, 0, 4], free_space = [0.14, 0, 0, 0.01, 0.1, 0.62])
-	# test_algorithm(test2, expected_result, requirements.best_fit, 'best_fit')
+	# best-fit
+	expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 1, 2, 3, 3, 4, 0, 5, 0, 4], free_space = [0.14, 0, 0, 0.01, 0.1, 0.62])
+	test_algorithm(test2, expected_result, requirements.best_fit, 'best_fit')
 
 	# # best-fit decreasing
 	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 3, 4, 4, 5, 3, 1, 0, 3, 3], free_space = [0, 0, 0.21, 0.03, 0.01, 0.62])
@@ -163,8 +163,8 @@ def bin_packing_tests():
 	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 0, 2, 2, 0, 3], free_space = [0.29, 0.25, 0.04, 0.36])
 	# test_algorithm(test3, expected_result, requirements.first_fit, 'first_fit')
 
-	# first-fit decreasing
-	expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 2, 3, 0, 1], free_space = [0, 0.33, 0.03, 0.58])
+	# # first-fit decreasing
+	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 2, 3, 0, 1], free_space = [0, 0.33, 0.03, 0.58])
 	# test_algorithm(test3, expected_result, requirements.first_fit_decreasing, 'first_fit_decreasing')
 
 	# # best-fit
@@ -190,8 +190,8 @@ def bin_packing_tests():
 	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 0, 2, 1, 1, 3, 4, 5, 1, 5, 6, 2, 4, 2, 6, 3, 7, 8, 3], free_space = [0, 0.01, 0, 0.08, 0.12, 0, 0.01, 0.37, 0.57])
 	# test_algorithm(test4, expected_result, requirements.first_fit, 'first_fit')
 
-	# first-fit decreasing
-	expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 3, 4, 5, 6, 7, 7, 6, 5, 3, 1, 2, 4, 0, 0, 2, 0, 2], free_space = [0, 0.01, 0.01, 0, 0.14, 0, 0, 0])
+	# # first-fit decreasing
+	# expected_result = ProblemInstance(items = items, assignments = [0, 1, 2, 3, 4, 5, 6, 7, 7, 6, 5, 3, 1, 2, 4, 0, 0, 2, 0, 2], free_space = [0, 0.01, 0.01, 0, 0.14, 0, 0, 0])
 	# test_algorithm(test4, expected_result, requirements.first_fit_decreasing, 'first_fit_decreasing')
 
 	# # best-fit

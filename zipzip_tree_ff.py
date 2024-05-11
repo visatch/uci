@@ -43,18 +43,26 @@ class ZipZipTreeFF(ZipZipTree):
             self.update_node(node)
         
     
-    def find_best_fit(self, item_size: float) -> Optional[Node]:
+    def find_first_fit(self, item_size: float) -> Optional[Node]:
         current = self.root
         best_fit = None
 
-        item_size = Decimal(str(item_size))
-        
         while current is not None:
-            if current.val.remaining_capacity >= item_size:
-                best_fit = current
+            left_best = current.left.val.best_remaining_capacity if current.left else Decimal(0)
+            right_best = current.right.val.best_remaining_capacity if current.right else Decimal(0)
+
+            # If the left subtree has a bin that can fit the item, go left
+            if left_best >= item_size:
                 current = current.left
-            else:
+            elif current.val.remaining_capacity >= item_size:
+                # Check the current node's bin
+                best_fit = current
+                break
+            elif right_best >= item_size:
+                # If the right subtree has a bin that can fit the item, go right
                 current = current.right
-        
-        return best_fit
+            else:
+                break
+
+        return best_fit        
 

@@ -201,10 +201,23 @@ class ZipZipTree:
         if self.root is None:
             print("Tree is empty")
         else:
-           self._print_tree(self.root,0)
-    
-    def _print_tree(self, node: Optional[Node],depth: int):
+           print("-"*25)
+           self._print_tree(self.root,"")
+           print("-"*25)
+
+    def _print_tree(self, node: Optional[Node],indent: str):
+        # if node is not None:
+        #     self._print_tree(node.right, depth + 1)
+        #     print("    " * depth + f"({node.key},{node.val} rank: ({node.rank.geometric_rank}, {node.rank.uniform_rank}))")
+        #     self._print_tree(node.left, depth + 1)
         if node is not None:
-            self._print_tree(node.right, depth + 1)
-            print("    " * depth + f"({node.key},{node.val} rank: ({node.rank.geometric_rank}, {node.rank.uniform_rank}))")
-            self._print_tree(node.left, depth + 1)
+            print(f"{indent}{node.key}")
+            if node.left is not None or node.right is not None:
+                if node.left is not None:
+                    self._print_tree(node.left, indent + " ")
+                else:
+                    print(f"{indent} \\")
+                if node.right is not None:
+                    self._print_tree(node.right, indent + " ")
+                else:
+                    print(f"{indent} \\")

@@ -3,8 +3,8 @@
 from next_fit import next_fit
 from first_fit import first_fit
 from first_fit import first_fit_decreasing
-# from best_fit import best_fit
-# from best_fit import best_fit_decreasing
+from best_fit import best_fit
+from best_fit import best_fit_decreasing
 from zipzip_tree import ZipZipTree, Rank
 
 # Details about Gradescope submission:
